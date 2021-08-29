@@ -24,8 +24,10 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.portainer.rule=Host(`$FRONT_END_DOMAIN_NAME`)"
+      - "traefik.http.routers.portainer.entrypoints=websecure"
       - "traefik.http.services.portainer.loadbalancer.server.port=9000"
       - "traefik.http.routers.portainer.service=portainer"
+      - "traefik.http.routers.edge.entrypoints=websecure"
       - "traefik.http.routers.edge.rule=Host(`$EDGE_DOMAIN_NAME`)"
       - "traefik.http.services.edge.loadbalancer.server.port=8000"
       - "traefik.http.routers.edge.service=edge"
